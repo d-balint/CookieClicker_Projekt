@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        document.body.style.backgroundImage = "url(hatter.jpg)"
+        const alap = document.createElement("div");
+        alap.style.backgroundColor = "#EEEECC";
+        alap.style.margin = "auto";
+        document.body.appendChild(alap);
+        
+
+        const kakas = document.createElement("img");
+        kakas.style.content = "url(kakas_kep.gif)"
+        kakas.style.float = "right"
+
+        const tyuk = document.createElement("img");
+        tyuk.style.content = "url(tyuk_kep.gif)"
+        tyuk.style.float = "left"
+        
+        const cim = document.createElement("h1");
+        cim.textContent = "A házityúk"
+
+        const bekezdes = document.createElement("p")
+        bekezdes.textContent = "A házityúk mintegy 4000 évre és több ősre vezethető vissza. A következő fajok vehettek részt a házityúk kialakulásában:"
+        bekezdes.style.textAlign = "left";
+
+        const bekezdes2 = document.createElement("p")
+        bekezdes2.textContent = "A kutatók érvei szerint a házityúk populációjában túl nagy a változatosság ahhoz, hogy ez egyetlen ősre legyen visszavezethető. Ezenkívül a házityúknak vannak olyan tulajdonságai, amelyek a bankivánál hiányoznak (pl. öt lábujj). Könnyű szelídíthetőségét valószínűleg a szürke dzsungeltyúknak köszönheti."
+        bekezdes2.style.textAlign = "left";
+
+        const bekezdes3 = document.createElement("p")
+        bekezdes3.textContent = "Kotlási ideje 21 nap. Húsa kiváló, fehérjedús, zsírral átszőtt, mégis kalóriaszegény. Tojása 50-70 gramm súlyú, a többi baromfifajjal együtt mind nagyobb szerepet játszik a korszerű élelmezésben."
+        bekezdes3.style.textAlign = "left";
+
+        const háketto = document.createElement("h2")
+        háketto.textContent = "Háziasítás és eredete"
+        háketto.style.textAlign = "left";
+
+        const ul1 = document.createElement("ul")
+        
+
+        const elso_sor = document.createElement("li")
+        elso_sor.textContent = "bankiva tyúk vagy vörös dzsungeltyúk (Gallus ferrugineus)"
+        elso_sor.style.textAlign = "left";
+
+        const masodik_sor = document.createElement("li")
+        masodik_sor.textContent = "ceyloni dzsungeltyúk (Gallus lafayetti)"
+        masodik_sor.style.textAlign = "left";
+
+        const harom_sor = document.createElement("li")
+        harom_sor.textContent = "szürke dzsungeltyúk (Gallus sonneratti)"
+        harom_sor.style.textAlign = "left";
+
+        const negy_sor = document.createElement("li")
+        negy_sor.textContent = "jávai dzsungeltyúk (Gallus varius)"
+        negy_sor.style.textAlign = "left";
+
+        const brek = document.createElement("br")
+        
+        const linkk = document.createElement("p")
+        linkk.textContent = "Elnevezés"
+        linkk.style.textAlign = "right"
+        linkk.style.textDecoration = "underline"
+        
+        alap.appendChild(kakas)
+        alap.appendChild(tyuk)
+        alap.appendChild(cim)
+        alap.appendChild(brek)
+        alap.appendChild(háketto)
+        alap.appendChild(bekezdes)
+        alap.appendChild(ul1)
+        ul1.appendChild(elso_sor)
+        ul1.appendChild(masodik_sor)
+        ul1.appendChild(harom_sor)
+        ul1.appendChild(negy_sor)
+        alap.appendChild(bekezdes2)
+        alap.appendChild(bekezdes3)
+        alap.appendChild(linkk)
+        alap.style.textAlign = "center";
+        alap.style.width = "800px";
+    </script>
+    
+</body>
+</html>

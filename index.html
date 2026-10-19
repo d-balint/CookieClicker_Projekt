@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Clicker</title>
+</head>
+<body>
+    <script>
+        // Háttér
+        document.body.style.backgroundColor = "#30251f";
+        document.body.style.fontFamily = "Arial";
+        document.body.style.color = "#ffffff";
+        document.body.style.margin = "0";
+
+        // Fő doboz
+        const alap = document.createElement("div");
+        alap.style.backgroundColor = "#f4e4c1";
+        alap.style.color = "#4b2e1e";
+        alap.style.width = "800px";
+        alap.style.maxWidth = "90%";
+        alap.style.margin = "30px auto";
+        alap.style.padding = "20px";
+        alap.style.boxSizing = "border-box";
+        alap.style.textAlign = "center";
+        alap.style.borderRadius = "20px";
+        alap.style.boxShadow = "0 0 20px #000000";
+        document.body.appendChild(alap);
+
+        // Cím
+        const cim = document.createElement("h1");
+        cim.textContent = "🍪 Cookie Clicker 🍪";
+        cim.style.fontSize = "36px";
+        alap.appendChild(cim);
+
+        // Süti számláló
+        const szamlalo = document.createElement("h2");
+        szamlalo.textContent = "Sütik: 0";
+        szamlalo.style.fontSize = "30px";
+        alap.appendChild(szamlalo);
+
+        // Másodpercenkénti termelés
+        const termeles = document.createElement("p");
+        termeles.textContent = "Sütik másodpercenként: 0";
+        alap.appendChild(termeles);
+
+        // Kattintás ereje
+        const ero = document.createElement("p");
+        ero.textContent = "Kattintás ereje: 1";
+        alap.appendChild(ero);
+
+        // Süti gomb
+        const suti = document.createElement("button");
+        suti.textContent = "🍪";
+        suti.style.fontSize = "120px";
+        suti.style.backgroundColor = "transparent";
+        suti.style.border = "none";
+        suti.style.cursor = "pointer";
+        suti.style.transition = "transform 0.1s";
+        suti.style.display = "block";
+        suti.style.margin = "20px auto";
+        alap.appendChild(suti);
+
+        // Üzenet
+        const uzenet = document.createElement("p");
+        uzenet.textContent = "Kattints a sütire a sütigyűjtéshez!";
+        alap.appendChild(uzenet);
+
+        // Elválasztó
+        const vonal = document.createElement("hr");
+        alap.appendChild(vonal);
+
+        // Fejlesztések címe
+        const fejlec = document.createElement("h2");
+        fejlec.textContent = "Fejlesztések";
+        alap.appendChild(fejlec);
+
+        // Játékadatok
+        let sutik = Number(localStorage.getItem("sutik")) || 0;
+        let kattintasEro =
+            Number(localStorage.getItem("kattintasEro")) || 1;
+        let gyarak = Number(localStorage.getItem("gyarak")) || 0;
+
+        let gyarAr = 25;
+        let eroAr = 20;
+
+        // Fejlesztések árának mentése
+        gyarAr = 25 + gyarak * 15;
+        eroAr = 20 + (kattintasEro - 1) * 25;
+
+        // Gyár vásárló gomb
+        const gyar = document.createElement("button");
+        gyar.style.display = "block";
+        gyar.style.width = "100%";
+        gyar.style.padding = "15px";
+        gyar.style.margin = "10px 0";
+        gyar.style.fontSize = "18px";
+        gyar.style.cursor = "pointer";
+        gyar.style.backgroundColor = "#b97942";
+        gyar.style.color = "white";
+        gyar.style.border = "none";
+        gyar.style.borderRadius = "10px";
+        alap.appendChild(gyar);
+
+        // Kattintásfejlesztő gomb
+        const fejlesztes = document.createElement("button");
+        fejlesztes.style.display = "block";
+        fejlesztes.style.width = "100%";
+        fejlesztes.style.padding = "15px";
+        fejlesztes.style.margin = "10px 0";
+        fejlesztes.style.fontSize = "18px";
+        fejlesztes.style.cursor = "pointer";
+        fejlesztes.style.backgroundColor = "#6c9149";
+        fejlesztes.style.color = "white";
+        fejlesztes.style.border = "none";
+        fejlesztes.style.borderRadius = "10px";
+        alap.appendChild(fejlesztes);
+
+        // Statisztikák
+        const stat = document.createElement("p");
+        alap.appendChild(stat);
+
+        // Mentés gomb
+        const mentes = document.createElement("button");
+        mentes.textContent = "💾 Játék mentése";
+        mentes.style.padding = "10px 20px";
+        mentes.style.margin = "10px";
+        mentes.style.cursor = "pointer";
+        alap.appendChild(mentes);
+
+        // Újrakezdés gomb
+        const ujra = document.createElement("button");
+        ujra.textContent = "🔄 Újrakezdés";
+        ujra.style.padding = "10px 20px";
+        ujra.style.margin = "10px";
+        ujra.style.cursor = "pointer";
+        alap.appendChild(ujra);
+
+        // Megjelenítés frissítése
+        function frissit() {
+            szamlalo.textContent =
+                "Sütik: " + Math.floor(sutik).toLocaleString("hu-HU");
+
+            termeles.textContent =
+                "Sütik másodpercenként: " + gyarak;
+
+            ero.textContent =
+                "Kattintás ereje: " + kattintasEro;
+
+            gyar.textContent =
+                "🏭 Sütigyár vásárlása (" + gyarAr + " süti) – " +
+                gyarak + " db";
+
+            fejlesztes.textContent =
+                "⬆️ Kattintás fejlesztése (" + eroAr + " süti)";
+
+            stat.textContent =
+                "Összes gyár: " + gyarak +
+                " | Kattintásonként: " + kattintasEro;
+
+            localStorage.setItem("sutik", sutik);
+            localStorage.setItem("kattintasEro", kattintasEro);
+            localStorage.setItem("gyarak", gyarak);
+        }
+
+        // Kattintás a sütire
+        suti.addEventListener("click", function() {
+            sutik += kattintasEro;
+
+            suti.style.transform = "scale(0.9)";
+            setTimeout(function() {
+                suti.style.transform = "scale(1)";
+            }, 100);
+
+            uzenet.textContent =
+                "+" + kattintasEro + " süti! Ügyes vagy!";
+
+            frissit();
+        });
+
+        // Sütigyár vásárlása
+        gyar.addEventListener("click", function() {
+            if (sutik >= gyarAr) {
+                sutik -= gyarAr;
+                gyarak++;
+
+                gyarAr = 25 + gyarak * 15;
+
+                uzenet.textContent =
+                    "🏭 Vásároltál egy sütigyárat!";
+
+                frissit();
+            } else {
+                uzenet.textContent = "Nincs elég sütid!";
+            }
+        });
+
+        // Kattintás fejlesztése
+        fejlesztes.addEventListener("click", function() {
+            if (sutik >= eroAr) {
+                sutik -= eroAr;
+                kattintasEro++;
+
+                eroAr = 20 + (kattintasEro - 1) * 25;
+
+                uzenet.textContent =
+                    "⬆️ Erősebb lett a kattintásod!";
+
+                frissit();
+            } else {
+                uzenet.textContent = "Nincs elég sütid!";
+            }
+        });
+
+        // Kézi mentés
+        mentes.addEventListener("click", function() {
+            frissit();
+            uzenet.textContent = "✅ A játékállás elmentve!";
+        });
+
+        // Újrakezdés
+        ujra.addEventListener("click", function() {
+            if (confirm("Biztosan újrakezded a játékot?")) {
+                sutik = 0;
+                kattintasEro = 1;
+                gyarak = 0;
+                gyarAr = 25;
+                eroAr = 20;
+
+                frissit();
+                uzenet.textContent = "Új játék indult!";
+            }
+        });
+
+        // Automatikus sütitermelés
+        setInterval(function() {
+            sutik += gyarak;
+            frissit();
+        }, 1000);
+
+        // Kezdeti állapot
+        frissit();
+    </script>
+</body>
+</html>
