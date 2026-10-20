@@ -78,16 +78,13 @@
 
         // Játékadatok
         let sutik = Number(localStorage.getItem("sutik")) || 0;
-        let kattintasEro =
-            Number(localStorage.getItem("kattintasEro")) || 1;
+        let kattintasEro = Number(localStorage.getItem("kattintasEro")) || 1;
         let gyarak = Number(localStorage.getItem("gyarak")) || 0;
 
         let gyarAr = 25;
         let eroAr = 20;
 
-        // Fejlesztések árának mentése
-        gyarAr = 25 + gyarak * 15;
-        eroAr = 20 + (kattintasEro - 1) * 25;
+        
 
         // Gyár vásárló gomb
         const gyar = document.createElement("button");
@@ -139,25 +136,17 @@
 
         // Megjelenítés frissítése
         function frissit() {
-            szamlalo.textContent =
-                "Sütik: " + Math.floor(sutik).toLocaleString("hu-HU");
+            szamlalo.textContent = "Sütik: " + Math.floor(sutik).toLocaleString("hu-HU");
 
-            termeles.textContent =
-                "Sütik másodpercenként: " + gyarak;
+            termeles.textContent = "Sütik másodpercenként: " + gyarak;
 
-            ero.textContent =
-                "Kattintás ereje: " + kattintasEro;
+            ero.textContent = "Kattintás ereje: " + kattintasEro;
 
-            gyar.textContent =
-                "🏭 Sütigyár vásárlása (" + gyarAr + " süti) – " +
-                gyarak + " db";
+            gyar.textContent = "🏭 Sütigyár vásárlása (" + gyarAr + " süti) – " + gyarak + " db";
 
-            fejlesztes.textContent =
-                "⬆️ Kattintás fejlesztése (" + eroAr + " süti)";
+            fejlesztes.textContent = "⬆️ Kattintás fejlesztése (" + eroAr + " süti)";
 
-            stat.textContent =
-                "Összes gyár: " + gyarak +
-                " | Kattintásonként: " + kattintasEro;
+            stat.textContent = "Összes gyár: " + gyarak + " | Kattintásonként: " + kattintasEro;
 
             localStorage.setItem("sutik", sutik);
             localStorage.setItem("kattintasEro", kattintasEro);
@@ -169,12 +158,9 @@
             sutik += kattintasEro;
 
             suti.style.transform = "scale(0.9)";
-            setTimeout(function() {
-                suti.style.transform = "scale(1)";
-            }, 100);
+            setTimeout(function() { suti.style.transform = "scale(1)"; }, 100);
 
-            uzenet.textContent =
-                "+" + kattintasEro + " süti! Ügyes vagy!";
+            uzenet.textContent = "+" + kattintasEro + " süti! Ügyes vagy!";
 
             frissit();
         });
@@ -187,8 +173,7 @@
 
                 gyarAr = 25 + gyarak * 15;
 
-                uzenet.textContent =
-                    "🏭 Vásároltál egy sütigyárat!";
+                uzenet.textContent = "🏭 Vásároltál egy sütigyárat!";
 
                 frissit();
             } else {
